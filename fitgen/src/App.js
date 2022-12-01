@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {overall} from '../src/components/overall';
+import { overall } from '../src/components/overall';
 
 function App() {
   return (
@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          wan tee 5 is holiday
         </p>
         <a
           className="App-link"
