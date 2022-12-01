@@ -1,7 +1,6 @@
 import React from 'react';
 import The_FITGEN from '../components/image/The_FITGEN.png'
 import '../components/style/navbar.css'
-import { GiHamburgerMenu } from "react-icons/gi";
 
 const Bar = () => {
     return (
