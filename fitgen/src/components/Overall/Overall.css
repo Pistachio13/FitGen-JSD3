@@ -55,7 +55,7 @@ h3 {
 .square {
     height: 60px;
     width: 2px;
-    background-color: orange;
+    background-color: var(--orange);
   }
 
 .left-row .information .overall-info {

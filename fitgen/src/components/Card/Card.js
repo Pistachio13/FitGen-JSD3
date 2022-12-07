@@ -1,5 +1,5 @@
 import React from "react";
-import bike from '../../image/bike.png';
+import bike from '../image/bike.png';
 import './Card.css';
 
 const Card = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import './Overall.css'
-import The_FITGEN from '../../image/The_FITGEN.png'
+import The_FITGEN from '../image/The_FITGEN.png'
 import Card from '../Card/Card';
 
 const Overall = () => {

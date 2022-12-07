@@ -1,5 +1,5 @@
 import React from 'react';
-import The_FITGEN from '../../image/The_FITGEN.png'
+import The_FITGEN from '../image/The_FITGEN.png'
 import './Navbar.css'
 
 const Bar = () => {
