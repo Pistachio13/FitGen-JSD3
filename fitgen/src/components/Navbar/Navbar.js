@@ -1,6 +1,6 @@
 import React from 'react';
-import The_FITGEN from '../components/image/The_FITGEN.png'
-import '../components/style/navbar.css'
+import The_FITGEN from '../../image/The_FITGEN.png'
+import './Navbar.css'
 
 const Bar = () => {
     return (

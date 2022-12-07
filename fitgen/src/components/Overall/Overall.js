@@ -1,7 +1,7 @@
 import React from 'react';
-import '../components/style/Overall.css'
-import The_FITGEN from '../components/image/The_FITGEN.png'
-import { AiOutlineArrowDown } from "react-icons/ai";
+import './Overall.css'
+import The_FITGEN from '../../image/The_FITGEN.png'
+import Card from '../Card/Card';
 
 const Overall = () => {
 
@@ -110,6 +110,8 @@ const Overall = () => {
                 </div>
             </div>
         </div>
+
+        <Card />
         </div>
 
     )

@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import Bar from './components/Bar';
-import Overall from './components/Overall';
-import Card from './Card';
+import Navbar from "../src/components/Navbar/Navbar";
+import Overall from './components/Overall/Overall';
 
 function App() {
   return (
     <div className='App'>
-    <Bar />
+    <Navbar />
     <Overall />
-    <Card />
     </div>
   );
 }
