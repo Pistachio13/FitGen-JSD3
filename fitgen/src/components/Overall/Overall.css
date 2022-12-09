@@ -144,6 +144,38 @@ circle {
     animation: anim 2s linear forwards;
 }
 
+.donut-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: relative;
+    margin-top: 30px;
+    background-color: var(--grey);
+}
+
+.donut-chart h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--orange);
+    background-color: var(--brown);
+    width: 100%;
+    height: 70px;
+    border-radius: 10px 10px 0 0;
+}
+
+.foreignObject {
+    display: flex;
+}
+
+.apexcharts-legend {
+    display: none;
+    visibility: hidden;
+}
+
 .graph-all {
     display: flex;
     position: relative;

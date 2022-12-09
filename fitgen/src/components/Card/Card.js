@@ -1,16 +1,16 @@
 import React from "react";
 import bike from '../image/bike.png';
 import './Card.css';
+import Newchart from '../Newchart/Newchart'
 
-const Card = () => {
+const Card = ({onAddPlanClick}= () => {}) => {
+  
     return (
         <div className="allcard">
 
             <div class="square-horizon"></div>
 
-            <div className='addPlan-button'>
-                <a href='/'>Add plan</a>
-            </div>
+                <button className='addPlan-button' onClick={onAddPlanClick}>Add plan</button>
 
             <div className="mini-card">
                 <div className="card">
@@ -108,7 +108,6 @@ const Card = () => {
                         <a className="EandD" href='/'>Delete</a>
                     </div>
 
-                    
                 </div>
             </div>
         </div>

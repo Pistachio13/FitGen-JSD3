@@ -2,21 +2,17 @@ import React from 'react';
 import './Overall.css'
 import The_FITGEN from '../image/The_FITGEN.png'
 import Card from '../Card/Card';
+import Schedule from '../Schedule/Schedule';
+import { useState, useEffect,useContext } from 'react';
+import GraphContext from '../Context/GraphContext';
+import Chart from 'react-apexcharts'
 
 const Overall = () => {
+    const [shouldShowPopup,setShouldShowPopup] = useState(false)
 
-    let number = document.getElementById("number");
-    let counter = 1;
-
-
-    setInterval(() => {
-        if (counter === 65) {
-            clearInterval();
-        } else {
-            counter += 1
-            number.innerHTML = counter + '%';
-        }
-    }, 30)
+    useEffect(() => {
+        console.log(shouldShowPopup)
+    },[shouldShowPopup])
 
     return (
         <div>   <div className='column'>
@@ -37,7 +33,7 @@ const Overall = () => {
                             <p>(Estimate)</p>
                         </div>
 
-                        <div class="square"></div>
+                        <div className="square"></div>
 
                         <div className='overall-info'>
                             <h2>8,590</h2>
@@ -45,7 +41,7 @@ const Overall = () => {
                             <p>(Estimate)</p>
                         </div>
 
-                        <div class="square"></div>
+                        <div className="square"></div>
 
                         <div className='overall-info'>
                             <h2>Running</h2>
@@ -66,6 +62,47 @@ const Overall = () => {
                     </div>
                 </div>
             </div>
+
+            
+            {/* Chart*/}
+            <div className='donut-chart'>
+            <React.Fragment>
+            <h2>Activity</h2>
+            <div className='container-fluid mt-3 mb-3' id='donut-chart'>
+                <Chart id="activity-chart"
+                    type='donut'
+                    width={450}
+                    height={300}
+                    series={[20, 67, 89, 34, 43]}
+
+                    options={{
+                        labels:['Walking','Running','Swimming','Hiking','Cycling'],
+
+                        plotOptions: {
+                            pie: {
+                                donut: {
+                                    labels: {
+                                        show: true,
+                                        total:{
+                                            show: true,
+                                            showAlways:true,
+                                            fontSize: 30,
+                                            color: 'red'
+
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        dataLabels:{
+                            //enabled:false,
+                        }
+                    }}
+                />
+            </div>
+        </React.Fragment>
+            </div>
+            {/*
             <div className='right-row'>
                 <div className='first-card'>
                     <div className='header'>
@@ -82,7 +119,7 @@ const Overall = () => {
                                 <circle cx="80" cy="80" r="70" stroke-linecap="round" />
                             </svg>
 
-                            <div id='number'></div>
+                            <div id='number'>{number}%</div>
 
                         </div>
                         <div className='graph-all'>
@@ -93,6 +130,7 @@ const Overall = () => {
 
 
             </div>
+    */}
             <div className='third-card'>
                 <div className='header'>
                     <div className='topic'><h1>Weight</h1></div>
@@ -110,8 +148,8 @@ const Overall = () => {
                 </div>
             </div>
         </div>
-
-        <Card />
+            <Card onAddPlanClick={() => {setShouldShowPopup(true)}} />
+            {shouldShowPopup && <Schedule onCloseHandler={ () =>  {setShouldShowPopup(false)}}/> }
         </div>
 
     )
