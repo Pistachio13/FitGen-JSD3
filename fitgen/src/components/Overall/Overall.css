@@ -31,7 +31,7 @@ h3 {
     color: var(--orange);
 }
 
-.left-row h2 {
+.left-row progress {
     padding-left: 20px;
 }
 
@@ -42,6 +42,21 @@ h3 {
 
 .left-row .overall-info {
     color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.left-row .info-activity {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 30px;
+    font-weight: 700;
 }
 
 .left-row .information {
@@ -52,10 +67,16 @@ h3 {
     background-color: var(--grey);   
 }
 
+.left-row p {
+    color: var(--black);
+    margin-top: 5px;
+}
+
 .square {
     height: 60px;
     width: 2px;
     background-color: var(--orange);
+    
   }
 
 .left-row .information .overall-info {
@@ -69,6 +90,7 @@ h3 {
     justify-content: space-around;
     align-items: center;
     text-align: center;
+    padding-top: 46px;
 }
 
 .left-row .rate .avg {
@@ -167,13 +189,21 @@ circle {
     border-radius: 10px 10px 0 0;
 }
 
-.foreignObject {
+.inside-chart {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
 }
-
 .apexcharts-legend {
     display: none;
     visibility: hidden;
+}
+
+
+.Activity-list {
+    display: flex;
 }
 
 .graph-all {

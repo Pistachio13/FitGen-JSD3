@@ -4,7 +4,7 @@ import './Schedule.css';
 
 import hiking from '../image/hiking.png';
 
-export const Schedule = () => {
+export const Schedule = ({onCloseHandler =() => {}}) => {
 
     const [activity, setActivity] = useState('')
     const [hour, setHour] = useState('')
@@ -102,7 +102,10 @@ export const Schedule = () => {
                 </div>
                 <div className='btn-group'>
                     <button className='btn-confirm' type='submit'>Confirm</button>
-                    <button className='btn-cancel'>Cancel</button>
+                    <button className='btn-cancel' onClick={(onAddPlanClick) => {
+                        onAddPlanClick.preventDefault()
+                        onCloseHandler()
+                    }}>Cancel</button>
                 </div>
             </form>
             </div>

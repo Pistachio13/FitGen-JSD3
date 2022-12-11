@@ -23,12 +23,11 @@ const Overall = () => {
                     </div>
 
                     <div className='this-week'>
-                        <h2>This week Progress</h2>
                     </div>
 
                     <div className='information'>
                         <div className='overall-info'>
-                            <h2>1260</h2>
+                            <h2 className='info-activity'>1260</h2>
                             <p>cal.burn today</p>
                             <p>(Estimate)</p>
                         </div>
@@ -36,7 +35,7 @@ const Overall = () => {
                         <div className="square"></div>
 
                         <div className='overall-info'>
-                            <h2>8,590</h2>
+                            <h2 className='info-activity'>8,590</h2>
                             <p>Total step/day</p>
                             <p>(Estimate)</p>
                         </div>
@@ -44,7 +43,7 @@ const Overall = () => {
                         <div className="square"></div>
 
                         <div className='overall-info'>
-                            <h2>Running</h2>
+                            <h2 className='info-activity'>Running</h2>
                             <p>is your favorite activity</p>
                             <p>(Estimate)</p>
                         </div>
@@ -67,12 +66,13 @@ const Overall = () => {
             {/* Chart*/}
             <div className='donut-chart'>
             <React.Fragment>
+            <div className='inside-chart'>
             <h2>Activity</h2>
             <div className='container-fluid mt-3 mb-3' id='donut-chart'>
                 <Chart id="activity-chart"
                     type='donut'
                     width={450}
-                    height={300}
+                    height={350}
                     series={[20, 67, 89, 34, 43]}
 
                     options={{
@@ -99,6 +99,7 @@ const Overall = () => {
                         }
                     }}
                 />
+                </div>
             </div>
         </React.Fragment>
             </div>
