@@ -68,6 +68,7 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
                 <div className='Activity form-Control'>
                     <label className='name'><span>Activity</span>
                         <select className='choices' name='Activities' id="Activities" onChange={inputAcitivty} value={activity} >
+                            <option value="Choose Activity">--Choose activity--</option>
                             <option value="Hiking"> Hiking</option>
                             <option value="Run"> Run</option>
                             <option value="Swimming"> Swimming</option>
