@@ -4,8 +4,9 @@ import The_FITGEN from '../image/The_FITGEN.png'
 import Card from '../Card/Card';
 import Schedule from '../Schedule/Schedule';
 import { useState, useEffect,useContext } from 'react';
-import GraphContext from '../Context/GraphContext';
 import Chart from 'react-apexcharts'
+import BMI from '../BMI/BMI';
+import ActivitesContextProvider from '../Context/ActContextProvider';
 
 const Overall = () => {
     const [shouldShowPopup,setShouldShowPopup] = useState(false)
@@ -19,7 +20,7 @@ const Overall = () => {
             <div className='left-row'>
                 <div className='week-card'>
                     <div className='health'>
-                        <img src={The_FITGEN} alt='logo' /><span><h2>This week Progress</h2></span>
+                        <img src={The_FITGEN} alt='logo' /><span><h2 className='progress'>This week Progress</h2></span>
                     </div>
 
                     <div className='this-week'>
@@ -133,24 +134,11 @@ const Overall = () => {
             </div>
     */}
             <div className='third-card'>
-                <div className='header'>
-                    <div className='topic'><h1>Weight</h1></div>
-                    <div className='past-weight'>
-                        <h2 className='number-weight-one'>76 <span className='kilo'> k.</span></h2>
-                    </div>
-
-                    <div className='icon-arrow'>
-                        <p>To</p>
-                    </div>
-
-                    <h2 className='number-weight-two'>70 <span className='kilo'> k.</span></h2>
-
-                    <a className='graph-button' href='/'>Check Progress</a>
-                </div>
+            <BMI />
             </div>
         </div>
-            <Card onAddPlanClick={() => {setShouldShowPopup(true)}} />
-            {shouldShowPopup && <Schedule onCloseHandler={ () =>  {setShouldShowPopup(false)}}/> }
+            <ActivitesContextProvider><Card title="headName" onAddPlanClick={() => {setShouldShowPopup(true)}} />
+            {shouldShowPopup && <Schedule onCloseHandler={ () =>  {setShouldShowPopup(false)}}/> }</ActivitesContextProvider>
         </div>
 
     )

@@ -1,11 +1,12 @@
-import React from 'react';
+import React, {useContext} from "react";
 import { useState } from 'react';
 import './Schedule.css';
+import ActivitiesContext from '../Context/ActContext'
 
 import hiking from '../image/hiking.png';
 
 export const Schedule = ({onCloseHandler =() => {}}) => {
-
+    const {activities, setActivities} = useContext(ActivitiesContext)
     const [activity, setActivity] = useState('')
     const [hour, setHour] = useState('')
     const [minute, setMinute] = useState('')
@@ -47,6 +48,7 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
             endDate: date,
             description: description
         }
+        setActivities([...activities,itemData])
         console.log(itemData);
         setActivity('')
         setHour('')
@@ -76,8 +78,8 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
 
                     <div className='Duration form-Control'>
                         <label className='time-count'><span>Duration</span>
-                            <input type="text" placeholder='Hour' className='hour-input' onChange={inputDurationHour} value={hour} />
-                            <input type="text" placeholder='Minute' className='minute-input' onChange={inputDurationMinute} value={minute} />
+                            <input type="number" placeholder='Hour' className='hour-input' onChange={inputDurationHour} value={hour} />
+                            <input type="number" placeholder='Minute' className='minute-input' onChange={inputDurationMinute} value={minute} />
                         </label>
                     </div>
 
@@ -101,7 +103,7 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
 
                 </div>
                 <div className='btn-group'>
-                    <button className='btn-confirm' type='submit'>Confirm</button>
+                    <button className='btn-confirm' type='submit' >Confirm</button>
                     <button className='btn-cancel' onClick={(onAddPlanClick) => {
                         onAddPlanClick.preventDefault()
                         onCloseHandler()
