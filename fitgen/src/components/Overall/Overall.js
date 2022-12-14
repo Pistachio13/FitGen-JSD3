@@ -7,9 +7,16 @@ import { useState, useEffect,useContext } from 'react';
 import Chart from 'react-apexcharts'
 import BMI from '../BMI/BMI';
 import ActivitesContextProvider from '../Context/ActContextProvider';
+import CardInfo from '../CardInfo/Cardinfo';
 
 const Overall = () => {
     const [shouldShowPopup,setShouldShowPopup] = useState(false)
+
+    const [calBurn, setCalBurn] = useState(0)
+    const [step, setStep] = useState(0)
+    const [activityCategory, setactivityCategory] = useState('Running')
+    const [distance, setDistance] = useState(0)
+    const [average, setAverage] = useState(0)
 
     useEffect(() => {
         console.log(shouldShowPopup)
@@ -28,7 +35,7 @@ const Overall = () => {
 
                     <div className='information'>
                         <div className='overall-info'>
-                            <h2 className='info-activity'>1260</h2>
+                            <h2 className='info-activity'>{calBurn}</h2>
                             <p>cal.burn today</p>
                             <p>(Estimate)</p>
                         </div>
@@ -36,7 +43,7 @@ const Overall = () => {
                         <div className="square"></div>
 
                         <div className='overall-info'>
-                            <h2 className='info-activity'>8,590</h2>
+                            <h2 className='info-activity'>{step}</h2>
                             <p>Total step/day</p>
                             <p>(Estimate)</p>
                         </div>
@@ -44,19 +51,19 @@ const Overall = () => {
                         <div className="square"></div>
 
                         <div className='overall-info'>
-                            <h2 className='info-activity'>Running</h2>
+                            <h2 className='info-activity'>{activityCategory}</h2>
                             <p>is your favorite activity</p>
                             <p>(Estimate)</p>
                         </div>
                     </div>
                     <div className='rate'>
                         <div className='avg'>
-                            <h1>80 km/week</h1>
+                            <h1>{distance}</h1>
                             <p>Total distance(km)</p>
                         </div>
 
                         <div className='avg'>
-                            <h1>8.0 </h1>
+                            <h1>{average} </h1>
                             <p>Avg Daily(km.)</p>
                         </div>
                     </div>
@@ -139,6 +146,10 @@ const Overall = () => {
         </div>
             <ActivitesContextProvider><Card title="headName" onAddPlanClick={() => {setShouldShowPopup(true)}} />
             {shouldShowPopup && <Schedule onCloseHandler={ () =>  {setShouldShowPopup(false)}}/> }</ActivitesContextProvider>
+
+            <div>
+            <CardInfo />
+            </div>
         </div>
 
     )

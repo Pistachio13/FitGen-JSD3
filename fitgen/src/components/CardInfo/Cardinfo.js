@@ -5,22 +5,21 @@ import bike from '../image/bike.png';
 import ActivitiesContext from "../Context/ActContext"
 
 const CardInfo = ( activity = '',startDate = '' , endDate = '') => {
-    console.log(activity, startDate, endDate)
     return (
     <div className="mini-card">
         <div className="card">
-            <h2>{activity}</h2>
+            <h2>33</h2>
             <img src={bike} alt='logo' />
             <div className="start-end">
                 <div className="start">
                     <p>Start</p>
-                    <p className="start-exercise">{startDate}</p>
+                    <p className="start-exercise">13</p>
                 </div>
 
                 <div class="square"></div>
                 <div className="end">
                     <p>End</p>
-                    <p className="finish-exercise">{endDate}</p>
+                    <p className="finish-exercise">11</p>
                 </div>
             </div>
             <div className="edit">

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../BMI/BMI.css"
 
 const BMI = () => {
     const [bmi, setBmi] = useState();
@@ -21,19 +22,19 @@ const BMI = () => {
       }
     };
     return (
-      <div>
-        <h1>BMI Calculator</h1>
-        <input
-          type="text"
+      <div  className="calculator">
+        <h1 className="bmi">BMI Calculator</h1>
+        <input className="height-cm"
+          type="number"
           onChange={(e) => setHeight(e.target.value)}
           placeholder="height in cm"
         />
-        <input
-          type="text"
+        <input className="height-cm"
+          type="number"
           onChange={(e) => setWeight(e.target.value)}
           placeholder="Weight in kg"
         />
-        <button onClick={handleBmi}>Calculate</button>
+        <button class="btn" onClick={handleBmi}>Calculate</button>
         <h1>{bmi}</h1>
         <h2>{info}</h2>
       </div>
