@@ -7,7 +7,8 @@ import ActivityIcon from "../ActivityIcon/ActivityIcon";
 
 
 
-const CardInfo = ({activity = '', date = '', endDate = ''}) => {
+const CardInfo = ({activity = '', date = '', endDate = '',description = ''}) => {
+    const [background,setBackground] = useState('red')
     return (
         <div className="mini-card">
             <div className="card">
@@ -25,15 +26,21 @@ const CardInfo = ({activity = '', date = '', endDate = ''}) => {
                         <p className="finish-exercise">{endDate}</p>
                     </div>
                 </div>
-
+                <div class="square"></div>
                 <div className='description'>
-                    <p>sdgsdgsdg</p>
+                <p className="info">Description</p>
+                    <p>{description}</p>
                 </div>
 
                 <div className="edit">
-                    <button className="start">Start</button>
-                    <a className="EandD" href='/'>Edit</a>
-                    <a className="EandD" href='/'>Delete</a>
+                    <button className="start" 
+                    style={{ background: background }}
+                    onClick={() => setBackground(prevBackground => (prevBackground === 'red' ? 'blue' : 'red'))}
+                  >
+                    Start
+                    </button>
+                    <button className="EandD" href='/'>Edit</button>
+                    <button className="EandD" href='/'>Delete</button>
                 </div>
             </div>
 

@@ -56,13 +56,14 @@ p {
     align-items: center;
     background-color: blue;
     width: 350px;
-    height: 400px;
+    height: 500px;
     border-radius: 10px;
+    
 }
 
 .card h2 {
     font-size: 40px;
-    margin: 20px 0px;
+    margin: 20px 0px 0px 0px;
     color: white;
 }
 
@@ -73,6 +74,7 @@ p {
 
 .start-end {
     display: flex;
+    flex-direction: column;
     
 }
 
@@ -84,7 +86,9 @@ p {
 }
 
 .square {
-    margin: 0px 20px;
+    width: 300px;
+    height: 1px;
+    margin: 10px 10px;
 }
 
 .edit {
@@ -110,6 +114,7 @@ p {
     font-size: 16px;
     margin: 0px 15px;
     font-size: 18px;
+    background-color: none;
 }
 
 .start p {
@@ -147,12 +152,20 @@ p {
 
 .edit .start {
     margin-right: 40px;
+    border: none;
 }
 
 .edit .EandD {
     color: var(--grey);
     font-weight: 500;
     margin-left: -10px;
+    background-color: transparent;
+    border: none;
+}
+
+.description p  {
+    color: var(--grey);
+    font-weight: 700;
 }
 
 

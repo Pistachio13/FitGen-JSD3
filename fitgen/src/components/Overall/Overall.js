@@ -40,7 +40,7 @@ const Overall = () => {
                             <p>(Estimate)</p>
                         </div>
 
-                        <div className="square"></div>
+                        <div className="square2"></div>
 
                         <div className='overall-info'>
                             <h2 className='info-activity'>{step}</h2>
@@ -48,7 +48,7 @@ const Overall = () => {
                             <p>(Estimate)</p>
                         </div>
 
-                        <div className="square"></div>
+                        <div className="square2"></div>
 
                         <div className='overall-info'>
                             <h2 className='info-activity'>{activityCategory}</h2>

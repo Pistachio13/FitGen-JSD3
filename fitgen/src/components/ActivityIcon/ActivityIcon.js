@@ -1,6 +1,10 @@
 import React from "react";
 import bike from '../image/bike.png'
 import hiking from '../image/hiking.png'
+import run from '../image/run.png'
+import swimming from '../image/swimming.png'
+import walk from '../image/walk.png'
+import sad from '../image/sad.png'
 
 const ActivityIcon = ({ activity = 'default' }) => {
     let imgSrc
@@ -11,7 +15,16 @@ const ActivityIcon = ({ activity = 'default' }) => {
         case 'hiking':
             imgSrc = hiking;
             break;
-            default: imgSrc = bike;
+        case 'run':
+            imgSrc = run;
+            break;
+        case 'swimming':
+            imgSrc = swimming;
+            break;
+        case 'walk':
+            imgSrc = walk;
+            break;
+        default: imgSrc = sad;
     }
     console.log(activity)
     return (

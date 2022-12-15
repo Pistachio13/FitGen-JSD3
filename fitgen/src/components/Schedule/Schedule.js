@@ -2,8 +2,8 @@ import React, {useContext} from "react";
 import { useState } from 'react';
 import './Schedule.css';
 import ActivitiesContext from '../Context/ActContext'
+import ActivityIcon from "../ActivityIcon/ActivityIcon";
 
-import hiking from '../image/hiking.png';
 
 export const Schedule = ({onCloseHandler =() => {}}) => {
     const {activities, setActivities} = useContext(ActivitiesContext)
@@ -62,8 +62,8 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
         <div className='container-all'>
         <div className="hiking-pic">
             <div className='background'></div>
-            <h1>Hiking</h1>
-            <img src={hiking} alt='Hiking' />
+            <h1>{activity}</h1>
+            <ActivityIcon activity={activity} />
             <form className='topInformation' onSubmit={saveItem}>
                 <div className='Activity form-Control'>
                     <label className='name'><span>Activity</span>
