@@ -16,7 +16,7 @@ const Card = ({onAddPlanClick}= () => {}) => {
 
             <div className="mini-card">
             
-            {activities.map(({activity, startDate, endDate}) => (<CardInfo activity={activity} startDate={startDate} endDate={endDate} />))}
+            {activities.map(({activity, date, endDate}) => (<CardInfo activity={activity} date={date} endDate={endDate} />))}
                 </div>
 
             </div>

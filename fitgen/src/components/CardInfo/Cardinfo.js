@@ -1,35 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { useContext } from "react";
-import {hiking} from "../image/hiking.png";
+import { hiking } from "../image/hiking.png";
 import bike from '../image/bike.png';
 import ActivitiesContext from "../Context/ActContext"
+import ActivityIcon from "../ActivityIcon/ActivityIcon";
 
-const CardInfo = ( activity = '',startDate = '' , endDate = '') => {
+
+
+const CardInfo = ({activity = '', date = '', endDate = ''}) => {
     return (
-    <div className="mini-card">
-        <div className="card">
-            <h2>33</h2>
-            <img src={bike} alt='logo' />
-            <div className="start-end">
-                <div className="start">
-                    <p>Start</p>
-                    <p className="start-exercise">13</p>
+        <div className="mini-card">
+            <div className="card">
+                <h2>{activity}</h2>
+               <ActivityIcon activity={activity} />
+                <div className="start-end">
+                    <div className="start">
+                        <p>Start</p>
+                        <p className="start-exercise">{date}</p>
+                    </div>
+
+                    <div class="square"></div>
+                    <div className="end">
+                        <p>End</p>
+                        <p className="finish-exercise">{endDate}</p>
+                    </div>
                 </div>
 
-                <div class="square"></div>
-                <div className="end">
-                    <p>End</p>
-                    <p className="finish-exercise">11</p>
+                <div className='description'>
+                    <p>sdgsdgsdg</p>
+                </div>
+
+                <div className="edit">
+                    <button className="start">Start</button>
+                    <a className="EandD" href='/'>Edit</a>
+                    <a className="EandD" href='/'>Delete</a>
                 </div>
             </div>
-            <div className="edit">
-                <a className="start" href='/'>Start</a>
-                <a className="EandD" href='/'>Edit</a>
-                <a className="EandD" href='/'>Delete</a>
-            </div>
+
         </div>
-
-    </div>
     )
 }
 

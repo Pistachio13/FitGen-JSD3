@@ -31,6 +31,7 @@ p {
     border-radius: 10px;
     font-weight: 700;
     font-size: 18px;
+    border: none;
 }
 
 .addPlan-button:hover { 
@@ -99,6 +100,7 @@ p {
     background-color: orange;
     border-radius: 10px;
     font-weight: bold;
+    
 }
 
 .edit .EandD{
@@ -107,8 +109,52 @@ p {
     padding : 20px;
     font-size: 16px;
     margin: 0px 15px;
-
+    font-size: 18px;
 }
+
+.start p {
+    font-size: 20px;
+}
+
+.start-exercise {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.end {
+    font-size: 20px;
+    font-weight: 700px;
+}
+
+.end p {
+    font-size: 20px;
+    font-weight: 700px;
+}
+
+.finish-exercise {
+    font-weight: 700;
+}
+
+.description {
+    margin-top: 10px;
+    color: var(--grey);
+    font-size: 18px;
+}
+
+.edit {
+    margin-top: 40px;
+}
+
+.edit .start {
+    margin-right: 40px;
+}
+
+.edit .EandD {
+    color: var(--grey);
+    font-weight: 500;
+    margin-left: -10px;
+}
+
 
 @media(max-width:768px) {
     .mini-card {
