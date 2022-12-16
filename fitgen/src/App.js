@@ -1,20 +1,28 @@
-import React from 'react';
+import React from 'react'
 import './App.css';
-import Navbar from "../src/components/Navbar/Navbar";
-import Overall from './components/Overall/Overall';
-import Schedule from './components/Schedule/Schedule'
-import GraphContextProvider from './components/Context/GraphContextProvider';
+import Hero from './components/Hero/Hero';
+import Programs from './components/Programs/Programs';
+import Reasons from './components/Reasons/Reasons';
+import Plans from './components/Plans/Plans';
+import Testimonials from './components/Testimonials /Testimonials';
 
 function App() {
   return (
-    <div className='App'>
-    <Navbar />
-    <GraphContextProvider>
-    <Overall />
-    </GraphContextProvider>
-   
+    <div className="App">
+        
+
+        <Hero/>
+        <Programs />
+        <Reasons />
+        <Plans/>
+        <Testimonials />
+        
+
     </div>
   );
 }
 
+
 export default App;
+
+
