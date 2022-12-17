@@ -3,11 +3,12 @@ import { useState } from 'react';
 import './Schedule.css';
 import ActivitiesContext from '../Context/ActContext'
 import ActivityIcon from "../ActivityIcon/ActivityIcon";
+import uuid from 'react-uuid';
 
 
 export const Schedule = ({onCloseHandler =() => {}}) => {
     const {activities, setActivities} = useContext(ActivitiesContext)
-    const [activity, setActivity] = useState('')
+    const [activity, setActivity] = useState('Choose your activity')
     const [hour, setHour] = useState('')
     const [minute, setMinute] = useState('')
     const [date, setDate] = useState('')
@@ -40,7 +41,8 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
 
     const saveItem = (e) => {
         e.preventDefault()
-        const itemData = {
+        const itemData = { 
+            id:uuid(),
             activity: activity,
             hour: Number(hour),
             minute: Number(minute),
@@ -49,13 +51,13 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
             description: description
         }
         setActivities([...activities,itemData])
-        console.log(itemData);
         setActivity('')
         setHour('')
         setMinute('')
         setDate('')
         setEnd('')
         setDescription('')
+        console.log('itemData',itemData)
     }
 
     return (

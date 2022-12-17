@@ -34,7 +34,7 @@ const BMI = () => {
           onChange={(e) => setWeight(e.target.value)}
           placeholder="Weight in kg"
         />
-        <button class="btn" onClick={handleBmi}>Calculate</button>
+        <button className="btn" onClick={handleBmi}>Calculate</button>
         <h1>{bmi}</h1>
         <h2>{info}</h2>
       </div>

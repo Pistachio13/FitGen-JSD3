@@ -3,115 +3,121 @@ import './Overall.css'
 import The_FITGEN from '../image/The_FITGEN.png'
 import Card from '../Card/Card';
 import Schedule from '../Schedule/Schedule';
-import { useState, useEffect,useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Chart from 'react-apexcharts'
 import BMI from '../BMI/BMI';
 import ActivitesContextProvider from '../Context/ActContextProvider';
 import CardInfo from '../CardInfo/Cardinfo';
+import Editor from '../Editor/Editor';
+import ActContext from '../Context/ActContext';
 
 const Overall = () => {
-    const [shouldShowPopup,setShouldShowPopup] = useState(false)
+    const [shouldShowPopup, setShouldShowPopup] = useState(false)
 
     const [calBurn, setCalBurn] = useState(0)
     const [step, setStep] = useState(0)
-    const [activityCategory, setactivityCategory] = useState('Running')
+    const [activityCategory, setActivityCategory] = useState('Running')
     const [distance, setDistance] = useState(0)
     const [average, setAverage] = useState(0)
+    const {shouldShowEditor} = useContext(ActContext)
 
     useEffect(() => {
         console.log(shouldShowPopup)
-    },[shouldShowPopup])
+    }, [shouldShowPopup])
+
+
 
     return (
-        <div>   <div className='column'>
-            <div className='left-row'>
-                <div className='week-card'>
-                    <div className='health'>
-                        <img src={The_FITGEN} alt='logo' /><span><h2 className='progress'>This week Progress</h2></span>
-                    </div>
-
-                    <div className='this-week'>
-                    </div>
-
-                    <div className='information'>
-                        <div className='overall-info'>
-                            <h2 className='info-activity'>{calBurn}</h2>
-                            <p>cal.burn today</p>
-                            <p>(Estimate)</p>
+        <div>
+            <div className='column'>
+                <div className='left-row'>
+                    <div className='week-card'>
+                        <div className='health'>
+                            <img src={The_FITGEN} alt='logo' /><span><h2 className='progress'>This week Progress</h2></span>
                         </div>
 
-                        <div className="square2"></div>
-
-                        <div className='overall-info'>
-                            <h2 className='info-activity'>{step}</h2>
-                            <p>Total step/day</p>
-                            <p>(Estimate)</p>
+                        <div className='this-week'>
                         </div>
 
-                        <div className="square2"></div>
+                        <div className='information'>
+                            <div className='overall-info'>
+                                <h2 className='info-activity'>{calBurn}</h2>
+                                <p>cal.burn today</p>
+                                <p>(Estimate)</p>
+                            </div>
 
-                        <div className='overall-info'>
-                            <h2 className='info-activity'>{activityCategory}</h2>
-                            <p>is your favorite activity</p>
-                            <p>(Estimate)</p>
-                        </div>
-                    </div>
-                    <div className='rate'>
-                        <div className='avg'>
-                            <h1>{distance}</h1>
-                            <p>Total distance(km)</p>
-                        </div>
+                            <div className="square2"></div>
 
-                        <div className='avg'>
-                            <h1>{average} </h1>
-                            <p>Avg Daily(km.)</p>
+                            <div className='overall-info'>
+                                <h2 className='info-activity'>{step}</h2>
+                                <p>Total step/day</p>
+                                <p>(Estimate)</p>
+                            </div>
+
+                            <div className="square2"></div>
+
+                            <div className='overall-info'>
+                                <h2 className='info-activity'>{activityCategory}</h2>
+                                <p>is your favorite activity</p>
+                                <p>(Estimate)</p>
+                            </div>
+                        </div>
+                        <div className='rate'>
+                            <div className='avg'>
+                                <h1>{distance}</h1>
+                                <p>Total distance(km)</p>
+                            </div>
+
+                            <div className='avg'>
+                                <h1>{average} </h1>
+                                <p>Avg Daily(km.)</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            
-            {/* Chart*/}
-            <div className='donut-chart'>
-            <React.Fragment>
-            <div className='inside-chart'>
-            <h2>Activity</h2>
-            <div className='container-fluid mt-3 mb-3' id='donut-chart'>
-                <Chart id="activity-chart"
-                    type='donut'
-                    width={450}
-                    height={350}
-                    series={[20, 67, 89, 34, 43]}
 
-                    options={{
-                        labels:['Walking','Running','Swimming','Hiking','Cycling'],
+                {/* Chart*/}
+                <div className='donut-chart'>
+                    <React.Fragment>
+                        <div className='inside-chart'>
+                            <h2>Activity</h2>
+                            <div className='container-fluid mt-3 mb-3' id='donut-chart'>
+                                <Chart id="activity-chart"
+                                    type='donut'
+                                    width={450}
+                                    height={350}
+                                    series={[20, 67, 89, 34, 43]}
 
-                        plotOptions: {
-                            pie: {
-                                donut: {
-                                    labels: {
-                                        show: true,
-                                        total:{
-                                            show: true,
-                                            showAlways:true,
-                                            fontSize: 30,
-                                            color: 'red'
+                                    options={{
+                                        labels: ['Walking', 'Running', 'Swimming', 'Hiking', 'Cycling'],
 
+                                        plotOptions: {
+                                            pie: {
+                                                donut: {
+                                                    labels: {
+                                                        show: true,
+                                                        total: {
+                                                            show: true,
+                                                            showAlways: true,
+                                                            fontSize: 30,
+                                                            color: 'red'
+
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        dataLabels: {
+                                            //enabled:false,
                                         }
-                                    }
-                                }
-                            }
-                        },
-                        dataLabels:{
-                            //enabled:false,
-                        }
-                    }}
-                />
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    </React.Fragment>
                 </div>
-            </div>
-        </React.Fragment>
-            </div>
-            {/*
+                {/*
             <div className='right-row'>
                 <div className='first-card'>
                     <div className='header'>
@@ -140,16 +146,12 @@ const Overall = () => {
 
             </div>
     */}
-            <div className='third-card'>
-            <BMI />
+                <div className='third-card'>
+                    <BMI />
+                </div>
             </div>
-        </div>
-            <ActivitesContextProvider><Card title="headName" onAddPlanClick={() => {setShouldShowPopup(true)}} />
-            {shouldShowPopup && <Schedule onCloseHandler={ () =>  {setShouldShowPopup(false)}}/> }</ActivitesContextProvider>
-
-            <div>
-            <CardInfo />
-            </div>
+            {shouldShowEditor && <Editor />}<Card title="headName" onAddPlanClick={() => { setShouldShowPopup(true) }} />
+                {shouldShowPopup && <Schedule onCloseHandler={() => { setShouldShowPopup(false) }} />}
         </div>
 
     )

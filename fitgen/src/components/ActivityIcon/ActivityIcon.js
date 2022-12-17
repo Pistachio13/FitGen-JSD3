@@ -6,9 +6,10 @@ import swimming from '../image/swimming.png'
 import walk from '../image/walk.png'
 import sad from '../image/sad.png'
 
-const ActivityIcon = ({ activity = 'default' }) => {
+const ActivityIcon = ({ activity = 'default' }) => { console.log('activityIcon',activity)
     let imgSrc
-    switch (activity.toLocaleLowerCase()) {
+    if(typeof activity !== 'string') return <div></div>
+    switch (activity.toLowerCase()) {
         case 'bike':
             imgSrc = bike;
             break;
@@ -33,6 +34,5 @@ const ActivityIcon = ({ activity = 'default' }) => {
         }} alt='activity-icons' />
     )
 }
-
 export default ActivityIcon
 
