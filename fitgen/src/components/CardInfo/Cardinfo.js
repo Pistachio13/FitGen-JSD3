@@ -10,7 +10,12 @@ const CardInfo = (props) => {
     const { activity = 'Choose your activity', date = '', endDate = '', description = '' } = props
 
     //TODO: create activity class to replace props when set editActivity
-    const { setEditActivity, setShouldShowEditor } = useContext(ActContext)
+    const { setEditActivity, setShouldShowEditor, removeItem } = useContext(ActContext)
+    const [text, setText] = useState('Start');
+
+    const toggle = () => {
+        setText(!text);
+    }
 
 
     return (
@@ -37,19 +42,17 @@ const CardInfo = (props) => {
                 </div>
 
                 <div className="edit">
-                    <button className="start"
-                        style={{ background: background }}
-                        onClick={() =>
-                            setBackground(prevBackground => (prevBackground === 'red' ? 'green' : 'red'))
-                        }
-                    >
-                        Start
+                    <button className={"start" + (text ? 'toggle--Done' : '')}
+
+                        onClick={toggle} >                                                
+                        {text ? 'Start' : 'Done'}    
+                        
                     </button>
                     <button className="EandD" onClick={(e) => {
                         setEditActivity(props)
                         setShouldShowEditor(true)
                     }}>Edit</button>
-                    <button className="EandD" >Delete</button>
+                    <button className="EandD" onClick={() => removeItem()} >Delete</button>
                 </div>
             </div>
 

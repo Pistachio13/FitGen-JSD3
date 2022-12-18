@@ -22,13 +22,7 @@ export default function ActivitesContextProvider({ children }) {
             })
     }
 
-    const onDelete = (e) => {
-        e.preventDefault()
-        fetch(`http://localhost:3001/activities/${editActivity.id}`, {
-            method: 'DELETE',
-            body: JSON.stringify({ ...editActivity }),
-            })
-    }
+
 
     return (<ActContext.Provider value={{
         activities,
@@ -38,7 +32,6 @@ export default function ActivitesContextProvider({ children }) {
         onUpdateActivity,
         shouldShowEditor,
         setShouldShowEditor,
-        onDelete,
     }}
     >
         {children}

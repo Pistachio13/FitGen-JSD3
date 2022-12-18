@@ -33,12 +33,13 @@ const Editor = () => {
     }
 
 
+
     return (
         <div className='container-all'>
             <div className="hiking-pic">
                 <div className='background'></div>
-                <h1>Edit: {activity}</h1>
-                <ActivityIcon activity={editActivity} />
+                <h1>{activity}</h1>
+                <ActivityIcon activity={activity || ''} />
                 <form className='topInformation' onSubmit={(e) =>{
                     e.preventDefault()
                     onUpdateActivity(e)
