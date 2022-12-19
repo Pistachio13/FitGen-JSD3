@@ -5,11 +5,12 @@
 }
 
 .left-r {
-    flex: 1 1;
+    grid-gap: 1rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* flex: 1 1; */
     gap: 1rem;
     grid-auto-rows: 1fr;
+    grid-template-columns: repeat(3,1fr);
 
 }
 
@@ -30,20 +31,21 @@
 }
 
 .left-r>:nth-child(3) {
-    width: 14rem;
+    grid-column: 2/3;
     grid-row: 2;
+    width: 14rem;
 }
 
 .left-r>:nth-child(4) {
-    width: 10rem;
-    grid-row: 2;
     grid-column: 3/4;
+    grid-row: 2;
     height: 11.2rem;
+    width: 10rem;
 }
 
 .right-r {
     display: flex;
-    flex: 2 2;
+    flex: 1 1;
     flex-direction: column;
     gap: 1rem;
     text-transform: uppercase;
@@ -110,4 +112,32 @@
 
 .partners-img {
     width: 2.5rem;
+}
+
+@media screen and (max-width: 768px) {
+    .Reasons {
+        flex-direction: column;
+    }
+        .left-r {
+            grid-auto-rows: auto;
+            overflow: hidden;
+        }
+        .left-r>:nth-child(1) {
+            width: 7rem;
+            height: 17rem;
+        }
+        .left-r>:nth-child(2) {
+            width: 15rem;
+            height: 10rem;
+        }
+        .left-r>:nth-child(3) {
+            width: 7rem;
+            /* height: 10rem; */
+        }
+        .left-r>:nth-child(4) {
+            width: 7rem;
+            height: 6rem;
+        }
+
+
 }
