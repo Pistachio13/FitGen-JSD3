@@ -6,11 +6,7 @@ import ActivitiesContext from "../Context/ActContext"
 const Card = ({ onAddPlanClick }) => {
     const { activities, setActivities } = useContext(ActivitiesContext)
 
-    // const removeItem = (e) => {
-    //     console.log(id)
-    //     const result = activities.filter((activities) => activities.id !== id)
-    //     setActivities(result)
-    // }
+  
 
     return (
         <div className="allcard">
@@ -21,8 +17,8 @@ const Card = ({ onAddPlanClick }) => {
 
             <div className="mini-card">
 
-                {activities.map(({ activity='', date, endDate, description, id }) =>
-                    (<CardInfo activity={activity} date={date} endDate={endDate} description={description} id={id}  />))}
+                {activities.map(({ activityName='', date, endDate, description, id }) =>
+                    (<CardInfo activityName={activityName} date={date} endDate={endDate} description={description} id={id}  />))}
             </div>
 
         </div>

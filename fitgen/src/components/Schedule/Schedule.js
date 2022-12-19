@@ -8,7 +8,7 @@ import uuid from 'react-uuid';
 
 export const Schedule = ({onCloseHandler =() => {}}) => {
     const {activities, setActivities} = useContext(ActivitiesContext)
-    const [activity, setActivity] = useState('Choose your activity')
+    const [activityName, setActivityName] = useState('Choose your activity')
     const [hour, setHour] = useState('')
     const [minute, setMinute] = useState('')
     const [date, setDate] = useState('')
@@ -16,7 +16,7 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
     const [description, setDescription] = useState('')
 
     const inputAcitivty = (e) => {
-        setActivity(e.target.value)
+        setActivityName(e.target.value)
     }
 
     const inputDurationHour = (e) => {
@@ -46,15 +46,15 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
         e.preventDefault()
         const itemData = { 
             id:uuid(),
-            activity: activity,
+            activityName,
             hour: Number(hour),
             minute: Number(minute),
-            date: date,
-            endDate: date,
-            description: description
+            date,
+            endDate,
+            description,
         }
         setActivities([...activities,itemData])
-        setActivity('')
+        setActivityName('')
         setHour('')
         setMinute('')
         setDate('')
@@ -67,12 +67,12 @@ export const Schedule = ({onCloseHandler =() => {}}) => {
         <div className='container-all'>
         <div className="hiking-pic">
             <div className='background'></div>
-            <h1>{activity}</h1>
-            <ActivityIcon activity={activity} />
+            <h1>{activityName}</h1>
+            <ActivityIcon activityName={activityName} />
             <form className='topInformation' onSubmit={saveItem}>
                 <div className='Activity form-Control'>
                     <label className='name'><span>Activity</span>
-                        <select className='choices' name='Activities' id="Activities" onChange={inputAcitivty} value={activity} >
+                        <select className='choices' name='Activities' id="Activities" onChange={inputAcitivty} value={activityName} >
                             <option value="Choose Activity">--Choose activity--</option>
                             <option value="Hiking"> Hiking</option>
                             <option value="Run"> Run</option>

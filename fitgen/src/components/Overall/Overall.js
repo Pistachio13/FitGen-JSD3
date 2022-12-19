@@ -86,6 +86,8 @@ const Overall = () => {
                                     width={450}
                                     height={350}
                                     series={[20, 67, 89, 34, 43]}
+                                    
+                                    
 
                                     options={{
                                         labels: ['Walking', 'Running', 'Swimming', 'Hiking', 'Cycling'],
@@ -96,10 +98,10 @@ const Overall = () => {
                                                     labels: {
                                                         show: true,
                                                         total: {
-                                                            show: true,
+                                                            show: false,
                                                             showAlways: true,
                                                             fontSize: 30,
-                                                            color: 'red'
+                                                            color: '#F48915'
 
                                                         }
                                                     }

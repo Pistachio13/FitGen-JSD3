@@ -6,10 +6,10 @@ import swimming from '../image/swimming.png'
 import walk from '../image/walk.png'
 import sad from '../image/sad.png'
 
-const ActivityIcon = ({ activity = 'default' }) => { console.log('activityIcon',activity)
+const ActivityIcon = ({ activityName = 'default' }) => { console.log('activityIcon',activityName)
     let imgSrc
-    if(typeof activity !== 'string') return <div></div>
-    switch (activity.toLowerCase()) {
+    if(typeof activityName !== 'string') return <div></div>
+    switch (activityName.toLowerCase()) {
         case 'bike':
             imgSrc = bike;
             break;
@@ -27,7 +27,7 @@ const ActivityIcon = ({ activity = 'default' }) => { console.log('activityIcon',
             break;
         default: imgSrc = sad;
     }
-    console.log(activity)
+    console.log(activityName)
     return (
         <img src={imgSrc} width={96} height={96} style={{
             objectFit: 'contain'

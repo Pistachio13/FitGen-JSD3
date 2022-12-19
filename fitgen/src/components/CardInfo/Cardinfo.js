@@ -1,25 +1,48 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useContext, } from "react";
 import ActivityIcon from "../ActivityIcon/ActivityIcon";
 import ActContext from "../Context/ActContext";
 
 const CardInfo = (props) => {
-    const { activity = 'Choose your activity', date = '', endDate = '', description = '' } = props
+    const { id = '-1', activityName = 'Choose your activity', date = '', endDate = '', description = '' } = props
 
     //TODO: create activity class to replace props when set editActivity
     const { setEditActivity, setShouldShowEditor, removeItem } = useContext(ActContext)
-    const [text, setText] = useState('Start');
+    const [isTimerActive, setIsTimerActive] = useState(false)
+    const [timerID, setTimerID] = useState(-1)
+    const [startTime, setStartTime] = useState(0)
+    const [endTime, setEndTime] = useState(0)
 
     const toggle = () => {
-        setText(!text);
+        setIsTimerActive(!isTimerActive)
     }
+
+    const getDuration = () => (endTime - startTime)
+    const getDurationInSeconds = () => Math.floor(getDuration() / 1000)
+
+    useEffect(() => {
+        if (isTimerActive) {
+            setStartTime(Date.now())
+            setEndTime(Date.now())
+            setTimerID(setInterval(() => {
+                setEndTime(Date.now())
+                console.log('timeInterval', endTime)
+            }, 1000))
+        } else {
+            clearInterval(timerID)
+        }
+
+        return () => {
+            clearInterval(timerID)
+        }
+    }, [isTimerActive])
 
 
     return (
         <div className="mini-card">
             <div className="card">
-                <h2>{activity}</h2>
-                <ActivityIcon activity={activity || ''} />
+                <h2>{activityName}</h2>
+                <ActivityIcon activityName={activityName || ''} />
                 <div className="start-end">
                     <div className="start">
                         <p>Start</p>
@@ -38,18 +61,18 @@ const CardInfo = (props) => {
                     <p>{description}</p>
                 </div>
 
+                {getDurationInSeconds() + ' sec'}
                 <div className="edit">
-                    <button className={"start" + (text ? 'toggle--Done' : '')}
+                    <button className={"start" + (isTimerActive ? 'toggle--Done' : '')}
+                        onClick={toggle} >
+                        {isTimerActive ? 'Done' : 'Start'}
 
-                        onClick={toggle} >                                                
-                        {text ? 'Start' : 'Done'}
-                        
                     </button>
                     <button className="EandD" onClick={(e) => {
                         setEditActivity(props)
                         setShouldShowEditor(true)
                     }}>Edit</button>
-                    <button className="EandD" onClick={() => removeItem()} >Delete</button>
+                    <button className="EandD" onClick={() => /*{if (confirm('Do you want to delete this activity?'))*/ removeItem(id)}>Delete</button>
                 </div>
             </div>
 
