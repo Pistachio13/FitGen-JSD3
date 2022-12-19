@@ -7,6 +7,13 @@ export default function ActivitesContextProvider({ children }) {
     const [shouldShowEditor, setShouldShowEditor] = useState(false)
     const [deleteCard, setDeleteCard] = useState('')
 
+    const removeItem = (id) => {
+        console.log('remove item',id)
+        const result = activities.filter((activities) => activities.id !== id)
+        console.log('remove item2',result)
+        setActivities(result)
+    }
+
 
     const onUpdateActivity = (e) => {
         e.preventDefault()
@@ -35,6 +42,7 @@ export default function ActivitesContextProvider({ children }) {
         setShouldShowEditor,
         deleteCard,
         setDeleteCard,
+        removeItem,
     }}
     >
         {children}
