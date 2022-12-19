@@ -4,9 +4,6 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: pink;
-}
 
 .navbar {
     max-width: 100%;
