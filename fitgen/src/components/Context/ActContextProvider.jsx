@@ -5,6 +5,7 @@ export default function ActivitesContextProvider({ children }) {
     const [activities, setActivities] = useState([])
     const [editActivity, setEditActivity] = useState({})
     const [shouldShowEditor, setShouldShowEditor] = useState(false)
+    const [deleteCard, setDeleteCard] = useState('')
 
 
     const onUpdateActivity = (e) => {
@@ -32,6 +33,8 @@ export default function ActivitesContextProvider({ children }) {
         onUpdateActivity,
         shouldShowEditor,
         setShouldShowEditor,
+        deleteCard,
+        setDeleteCard,
     }}
     >
         {children}

@@ -6,19 +6,17 @@ import Schedule from '../Schedule/Schedule';
 import { useState, useEffect, useContext } from 'react';
 import Chart from 'react-apexcharts'
 import BMI from '../BMI/BMI';
-import ActivitesContextProvider from '../Context/ActContextProvider';
-import CardInfo from '../CardInfo/Cardinfo';
 import Editor from '../Editor/Editor';
 import ActContext from '../Context/ActContext';
 
 const Overall = () => {
     const [shouldShowPopup, setShouldShowPopup] = useState(false)
 
-    const [calBurn, setCalBurn] = useState(0)
-    const [step, setStep] = useState(0)
-    const [activityCategory, setActivityCategory] = useState('Running')
-    const [distance, setDistance] = useState(0)
-    const [average, setAverage] = useState(0)
+    const [calBurn] = useState(0)
+    const [step] = useState(0)
+    const [activityCategory] = useState('Running')
+    const [distance] = useState(0)
+    const [average] = useState(0)
     const {shouldShowEditor} = useContext(ActContext)
 
     useEffect(() => {

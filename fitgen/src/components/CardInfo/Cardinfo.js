@@ -3,10 +3,7 @@ import { useContext, } from "react";
 import ActivityIcon from "../ActivityIcon/ActivityIcon";
 import ActContext from "../Context/ActContext";
 
-
-
 const CardInfo = (props) => {
-    const [background, setBackground] = useState('red')
     const { activity = 'Choose your activity', date = '', endDate = '', description = '' } = props
 
     //TODO: create activity class to replace props when set editActivity
@@ -45,7 +42,7 @@ const CardInfo = (props) => {
                     <button className={"start" + (text ? 'toggle--Done' : '')}
 
                         onClick={toggle} >                                                
-                        {text ? 'Start' : 'Done'}    
+                        {text ? 'Start' : 'Done'}
                         
                     </button>
                     <button className="EandD" onClick={(e) => {
