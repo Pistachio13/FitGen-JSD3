@@ -5,7 +5,7 @@ import ActivityIcon from "../ActivityIcon/ActivityIcon";
 
 const Editor = () => {
     const { editActivity, setEditActivity, onUpdateActivity, setShouldShowEditor } = useContext(ActContext)
-    const { activityName, date, description, endDate, hour, minute } = editActivity
+    const { activityName, startDate, description, endDate, hour, minute } = editActivity
 
     const inputAcitivty = (e) => {
         const { value: activityName } = e.target
@@ -20,8 +20,8 @@ const Editor = () => {
         setEditActivity({ ...editActivity, minute })
     }
     const inputDate = (e) => {
-        const { value: date } = e.target
-        setEditActivity({ ...editActivity, date })
+        const { value: startDate} = e.target
+        setEditActivity({ ...editActivity, startDate})
     }
     const inputEnd = (e) => {
         const { value: end } = e.target
@@ -67,7 +67,7 @@ const Editor = () => {
 
                         <div className='Date form-Control'>
                             <label><span>Start Date</span>
-                                <input type="datetime-local" onChange={inputDate} value={date} />
+                                <input type="datetime-local" onChange={inputDate} value={startDate} />
                             </label>
                         </div>
 

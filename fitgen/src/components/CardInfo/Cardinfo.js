@@ -4,7 +4,7 @@ import ActivityIcon from "../ActivityIcon/ActivityIcon";
 import ActContext from "../Context/ActContext";
 
 const CardInfo = (props) => {
-    const { id = '-1', activityName = 'Choose your activity', date = '', endDate = '', description = '' } = props
+    const { id = '-1', activityName = 'Choose your activity', startDate= '', endDate = '', description = '' } = props
 
     //TODO: create activity class to replace props when set editActivity
     const { setEditActivity, setShouldShowEditor, removeItem } = useContext(ActContext)
@@ -46,7 +46,7 @@ const CardInfo = (props) => {
                 <div className="start-end">
                     <div className="start">
                         <p>Start</p>
-                        <p className="start-exercise">{date}</p>
+                        <p className="start-exercise">{startDate}</p>
                     </div>
 
                     <div className="square"></div>
