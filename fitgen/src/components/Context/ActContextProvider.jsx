@@ -14,8 +14,9 @@ export default function ActivitesContextProvider({ children }) {
         console.log('remove item2',result)
         setActivities(result)
     }
+    
 
-    const fetchActivities = async () => 
+    const fetchActivities = async () => {
         fetch(`http://localhost:3001/activities`)
         .then((res) => res.json())
             .then((res) => { console.log('success:', res.map((a) => new Activity(a))) })
@@ -39,9 +40,10 @@ export default function ActivitesContextProvider({ children }) {
                 console.error('error:', err)
             })
     }
-
-
-
+    
+    
+    
+    
     return (<ActContext.Provider value={{
         activities,
         setActivities,
@@ -53,6 +55,7 @@ export default function ActivitesContextProvider({ children }) {
         deleteCard,
         setDeleteCard,
         removeItem,
+        fetchActivities,
     }}
     >
         {children}

@@ -50,10 +50,7 @@ const CardInfo = (props) => {
                     </div>
 
                     <div className="square"></div>
-                    <div className="end">
-                        <p>End</p>
-                        <p className="finish-exercise">{endDate}</p>
-                    </div>
+                    {getDurationInSeconds() + ' sec'}
                 </div>
                 <div className="square"></div>
                 <div className='description'>
@@ -61,7 +58,7 @@ const CardInfo = (props) => {
                     <p>{description}</p>
                 </div>
 
-                {getDurationInSeconds() + ' sec'}
+                
                 <div className="edit">
                     <button className={"start" + (isTimerActive ? 'toggle--Done' : '')}
                         onClick={toggle} >
