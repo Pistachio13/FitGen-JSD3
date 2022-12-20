@@ -23,8 +23,6 @@ const Overall = () => {
         console.log(shouldShowPopup)
     }, [shouldShowPopup])
 
-
-
     return (
         <div>
             <div className='column'>
