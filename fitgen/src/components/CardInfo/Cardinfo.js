@@ -50,7 +50,7 @@ const CardInfo = (props) => {
                     </div>
 
                     <div className="square"></div>
-                    {getDurationInSeconds() + ' sec'}
+                    <h3 className="getDuration">{getDurationInSeconds() + ' sec'}</h3>
                 </div>
                 <div className="square"></div>
                 <div className='description'>
@@ -60,16 +60,18 @@ const CardInfo = (props) => {
 
                 
                 <div className="edit">
-                    <button className={"start" + (isTimerActive ? 'toggle--Done' : '')}
-                        onClick={toggle} >
-                        {isTimerActive ? 'Done' : 'Start'}
-
-                    </button>
+                    <button className="EandD" onClick={() => /*{if (confirm('Do you want to delete this activity?'))*/ removeItem(id)}>Delete</button>
                     <button className="EandD" onClick={(e) => {
                         setEditActivity(props)
                         setShouldShowEditor(true)
                     }}>Edit</button>
-                    <button className="EandD" onClick={() => /*{if (confirm('Do you want to delete this activity?'))*/ removeItem(id)}>Delete</button>
+                    
+                    <button className={"start" + (isTimerActive ? 'toggle--Done' : '')}
+                        onClick={toggle} >
+                        {isTimerActive ? 'Done' : 'Start'}
+                        
+
+                    </button>
                 </div>
             </div>
 

@@ -17,6 +17,10 @@ p {
 
 }
 
+.getDuration {
+    color: red
+}
+
 .addPlan-button {
     display: flex;
     background-color: var(--orange);

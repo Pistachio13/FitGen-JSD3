@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from 'react';
 import './Schedule.css';
 import ActivitiesContext from '../Context/ActContext'
 import ActivityIcon from "../ActivityIcon/ActivityIcon";
 import Activity from "../../model/Activity";
-
+import ActContext from '../Context/ActContext';
 
 export const Schedule = ({ onCloseHandler = () => { } }) => {
     const { activities, setActivities } = useContext(ActivitiesContext)
@@ -14,6 +14,7 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
     const [startDate, setDate] = useState('')
     const [endDate, setEnd] = useState('')
     const [description, setDescription] = useState('')
+
 
     const inputAcitivty = (e) => {
         setActivityName(e.target.value)
@@ -31,13 +32,22 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
         setDate(e.target.value)
     }
 
-    const inputEnd = (e) => {
-        setEnd(e.target.value)
-    }
+    // const inputEnd = (e) => {
+    //     setEnd(e.target.value)
+    // }
 
     const inputDescription = (e) => {
         setDescription(e.target.value)
     }
+
+    const {createActivity} = useContext(ActContext)
+    useEffect(() => { 
+        createActivity()
+    },[])
+
+    // useEffect(() => {
+    //     console.log('call useeffect')
+    // }, [activityName,hour,minute,startDate,endDate,description])
 
 
 
@@ -53,6 +63,7 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
             description,
         })
 
+        createActivity(e,itemData) 
         setActivities([...activities, itemData])
         setActivityName('')
         setHour('')
@@ -60,8 +71,11 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
         setDate('')
         setEnd('')
         setDescription('')
-        console.log('itemData', itemData)
     }
+
+    // useEffect(() => { 
+    //     CreateActivity()
+    // }, [])
 
     return (
         <div className='container-all'>
@@ -95,11 +109,7 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
                             </label>
                         </div>
 
-                        <div className='Date form-Control'>
-                            <label><span>End Date</span>
-                                <input type="datetime-local" onChange={inputEnd} value={endDate} />
-                            </label>
-                        </div>
+                  
 
                         <div className='Description'>
                             <label><span>Description</span>
@@ -109,7 +119,7 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
 
                     </div>
                     <div className='btn-group'>
-                        <button className='btn-confirm' type='submit' >Confirm</button>
+                        <button className='btn-confirm' type='submit' onClick={saveItem} >Confirm</button>
                         <button className='btn-cancel' onClick={(onAddPlanClick) => {
                             onAddPlanClick.preventDefault()
                             onCloseHandler()

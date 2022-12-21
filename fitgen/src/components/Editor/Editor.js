@@ -71,11 +71,7 @@ const Editor = () => {
                             </label>
                         </div>
 
-                        <div className='Date form-Control'>
-                            <label><span>End Date</span>
-                                <input type="datetime-local" onChange={inputEnd} value={endDate} />
-                            </label>
-                        </div>
+                    
 
                         <div className='Description'>
                             <label><span>Description</span>

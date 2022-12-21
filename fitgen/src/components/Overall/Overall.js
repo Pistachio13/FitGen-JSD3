@@ -17,11 +17,15 @@ const Overall = () => {
     const [activityCategory] = useState('Running')
     const [distance] = useState(0)
     const [average] = useState(0)
-    const {shouldShowEditor} = useContext(ActContext)
+    const {shouldShowEditor, fetchActivities } = useContext(ActContext)
 
-    useEffect(() => {
+    useEffect(() => { 
         console.log(shouldShowPopup)
     }, [shouldShowPopup])
+
+    useEffect(() => { 
+        fetchActivities()
+    }, [])
 
     return (
         <div>
@@ -46,8 +50,7 @@ const Overall = () => {
 
                             <div className='overall-info'>
                                 <h2 className='info-activity'>{step}</h2>
-                                <p>Total step/day</p>
-                                <p>(Estimate)</p>
+                                <p>Total Hour</p>
                             </div>
 
                             <div className="square2"></div>
@@ -55,7 +58,6 @@ const Overall = () => {
                             <div className='overall-info'>
                                 <h2 className='info-activity'>{activityCategory}</h2>
                                 <p>is your favorite activity</p>
-                                <p>(Estimate)</p>
                             </div>
                         </div>
                         <div className='rate'>
