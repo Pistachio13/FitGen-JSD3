@@ -41,14 +41,13 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
     }
 
     const {createActivity} = useContext(ActContext)
-    useEffect(() => { 
-        createActivity()
-    },[])
+    // useEffect(() => { 
+    //     createActivity()
+    // },[])
 
     // useEffect(() => {
     //     console.log('call useeffect')
     // }, [activityName,hour,minute,startDate,endDate,description])
-
 
 
 
@@ -76,6 +75,7 @@ export const Schedule = ({ onCloseHandler = () => { } }) => {
     // useEffect(() => { 
     //     CreateActivity()
     // }, [])
+
 
     return (
         <div className='container-all'>

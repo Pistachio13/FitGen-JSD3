@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import ActContext from "../Context/ActContext";
 import ActivityIcon from "../ActivityIcon/ActivityIcon";
 
@@ -20,8 +20,8 @@ const Editor = () => {
         setEditActivity({ ...editActivity, minute })
     }
     const inputDate = (e) => {
-        const { value: startDate} = e.target
-        setEditActivity({ ...editActivity, startDate})
+        const { value: startDate } = e.target
+        setEditActivity({ ...editActivity, startDate })
     }
     const inputEnd = (e) => {
         const { value: end } = e.target
@@ -40,11 +40,11 @@ const Editor = () => {
                 <div className='background'></div>
                 <h1>{activityName}</h1>
                 <ActivityIcon activityName={activityName || ''} />
-                <form className='topInformation' onSubmit={(e) =>{
+                <form className='topInformation' onSubmit={(e) => {
                     e.preventDefault()
                     onUpdateActivity(e)
                     setShouldShowEditor(false)
-                    
+
                 }}>
                     <div className='Activity form-Control'>
                         <label className='name'><span>Activity</span>
@@ -71,7 +71,7 @@ const Editor = () => {
                             </label>
                         </div>
 
-                    
+
 
                         <div className='Description'>
                             <label><span>Description</span>
@@ -81,7 +81,13 @@ const Editor = () => {
 
                     </div>
                     <div className='btn-group'>
-                        <button className='btn-confirm' type='submit' >Update</button>
+                        <button className='btn-confirm' type='submit' onClick={(e) => {
+                            e.preventDefault()
+                            onUpdateActivity(e)
+                            setShouldShowEditor(false)
+                        }}  >Update</button>
+
+
                         <button className='btn-cancel' onClick={(e) => {
                             e.preventDefault()
                             setEditActivity({})

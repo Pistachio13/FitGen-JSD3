@@ -9,17 +9,18 @@ export default function ActivitesContextProvider({ children }) {
     const [deleteCard, setDeleteCard] = useState('')
 
     const removeItem = (id) => {
-        console.log('remove item', id)
-        const result = activities.filter((activities) => activities.id !== id)
-        console.log('remove item2', result)
-        setActivities(result)
+        deleteActivity(id)
+        .then(() => fetchActivities()
+        .catch((err) => {
+            console.error('error:', err)
+        })
+        )
     }
 
-
-    const createActivity = (e,activity) => {
+    const createActivity = (e, activity) => {
         const myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
-        console.log('activites',activities)
+        console.log('activites', activities)
         const raw = JSON.stringify({
             ...activity
         });
@@ -32,11 +33,40 @@ export default function ActivitesContextProvider({ children }) {
         };
         fetch(`/activities/create`, requestOptions)
             .then((res) => res.json())
-            .then((res) => { console.log('success:', res) })
+            .then((res) => fetchActivities())
             .catch((err) => {
                 console.error('error:', err)
             })
     }
+
+    const deleteActivity = async (_id) => {
+        try {
+          const response = await fetch(`/activities/${_id}/delete`, {
+            method: 'DELETE',
+          });
+          const data = await response.json();
+          console.log('data delete',data)
+        } catch (error) {
+          // handle errors here
+        }
+      };
+
+
+    // const sendActivity = (e,activities) => {
+    //     e.preventDefault()
+    //     fetch(`/activityId`, {
+    //         method: 'PUT',
+    //         body: JSON.stringify( {...activities} ),
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         }
+    //     })
+    //         .then((res) => res.json())
+    //         .then((res) => { console.log('success:', res) })
+    //         .catch((err) => {
+    //             console.error('error:', err)
+    //         })
+    // }
 
     // const fetchActivities = async () => {
     //     fetch(`/activities`)
@@ -49,24 +79,19 @@ export default function ActivitesContextProvider({ children }) {
 
 
     const fetchActivities = async () => {
-        fetch(`/activities`, {
-            method: 'GET',   //original port = 3001
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then((res) => res.json({
-                activityName: res.activityName,
-                startDate: res.startDate,
-                endDate: res.endDate,
-                description: res.description,
-                id: res.id,
-            }))
-            .then((res) => { res.map((a) => new Activity(a)) })
-            .catch((err) => {
-                console.error('error:', err)
-            })
+        try {
+            const result = await fetch(`/activities`)
+            const data = await result.json()
+            console.log(data)
+            // const activites = data.activites.map((a) => new Activity(a))
+            const { activities } = data
+            console.log('activities', activities)
+            setActivities(activities)
+        } catch (error) {
+            console.error('error')
+        }
     }
+
 
     // const submitButton = () => {
     //     const [response, setResponse] = useState(null);
@@ -91,7 +116,7 @@ export default function ActivitesContextProvider({ children }) {
 
     const onUpdateActivity = (e) => {
         e.preventDefault()
-        fetch(`http://localhost:8080/activities/${editActivity.id}`, {
+        fetch(`/activities/${editActivity._id}/update`, {
             method: 'PUT',
             body: JSON.stringify({ ...editActivity }),
             headers: {
@@ -99,7 +124,7 @@ export default function ActivitesContextProvider({ children }) {
             }
         })
             .then((res) => res.json())
-            .then((res) => { console.log('success:', res) })
+            .then((res) => fetchActivities())
             .catch((err) => {
                 console.error('error:', err)
             })
@@ -118,6 +143,8 @@ export default function ActivitesContextProvider({ children }) {
         removeItem,
         fetchActivities,
         createActivity,
+        deleteActivity,
+        // sendActivity,
     }}
     >
         {children}

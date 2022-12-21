@@ -12,11 +12,11 @@ import ActContext from '../Context/ActContext';
 const Overall = () => {
     const [shouldShowPopup, setShouldShowPopup] = useState(false)
 
-    const [calBurn] = useState(0)
-    const [step] = useState(0)
+    const [calBurn] = useState(1950)
+    const [step] = useState(5314)
     const [activityCategory] = useState('Running')
-    const [distance] = useState(0)
-    const [average] = useState(0)
+    const [distance] = useState(2.5)
+    const [average] = useState(5314)
     const {shouldShowEditor, fetchActivities } = useContext(ActContext)
 
     useEffect(() => { 
@@ -24,8 +24,14 @@ const Overall = () => {
     }, [shouldShowPopup])
 
     useEffect(() => { 
+        console.log(fetchActivities)
         fetchActivities()
     }, [])
+
+    useEffect(() => { 
+        console.log(shouldShowPopup)
+    }, [shouldShowPopup])
+
 
     return (
         <div>
@@ -42,8 +48,7 @@ const Overall = () => {
                         <div className='information'>
                             <div className='overall-info'>
                                 <h2 className='info-activity'>{calBurn}</h2>
-                                <p>cal.burn today</p>
-                                <p>(Estimate)</p>
+                                <p>cal.burn today</p>                             
                             </div>
 
                             <div className="square2"></div>
