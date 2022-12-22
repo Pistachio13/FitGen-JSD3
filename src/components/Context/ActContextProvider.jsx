@@ -31,7 +31,7 @@ export default function ActivitesContextProvider({ children }) {
             body: raw,
             redirect: 'follow'
         };
-        fetch(`/activities/create`, requestOptions)
+        fetch(`https://fitgen-backend.vercel.app/activities/create`, requestOptions)
             .then((res) => res.json())
             .then((res) => fetchActivities())
             .catch((err) => {
@@ -41,7 +41,7 @@ export default function ActivitesContextProvider({ children }) {
 
     const deleteActivity = async (_id) => {
         try {
-          const response = await fetch(`/activities/${_id}/delete`, {
+          const response = await fetch(`https://fitgen-backend.vercel.app/activities/${_id}/delete`, {
             method: 'DELETE',
           });
           const data = await response.json();
@@ -80,7 +80,7 @@ export default function ActivitesContextProvider({ children }) {
 
     const fetchActivities = async () => {
         try {
-            const result = await fetch(`/activities`)
+            const result = await fetch(`https://fitgen-backend.vercel.app/activities`)
             const data = await result.json()
             console.log(data)
             // const activites = data.activites.map((a) => new Activity(a))
@@ -116,7 +116,7 @@ export default function ActivitesContextProvider({ children }) {
 
     const onUpdateActivity = (e) => {
         e.preventDefault()
-        fetch(`/activities/${editActivity._id}/update`, {
+        fetch(`https://fitgen-backend.vercel.app/activities/${editActivity._id}/update`, {
             method: 'PUT',
             body: JSON.stringify({ ...editActivity }),
             headers: {
